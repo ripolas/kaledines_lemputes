@@ -19,7 +19,7 @@ public class Main {
     public static SerialPort serialPort;
     public static final String arduinoPort = "/dev/ttyACM0"; //"COM6" for windows.
     public static OutputStream arduinoOutputStream;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         staticFileLocation("public");
         port(8443);
         String keystorePath = "/home/ripolas/Downloads/keystore.jks";
