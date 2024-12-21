@@ -40,6 +40,11 @@ public class Main {
             leds.add(new Color(255, 255, 0));
         }
         // setup for the arduino sending thing
+        System.out.println("Available Ports:");
+        SerialPort[] ports = SerialPort.getCommPorts();
+        for (SerialPort port : ports) {
+            System.out.println(port.getSystemPortName() + " - " + port.getDescriptivePortName());
+        }
         serialPort = SerialPort.getCommPort(arduinoPort);
         serialPort.setComPortParameters(1000000, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
         serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, 0, 0);
