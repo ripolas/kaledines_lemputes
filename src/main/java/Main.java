@@ -57,7 +57,7 @@ public class Main {
             System.out.println("failed to open port");
         }
     }
-    public static void update_LEDS() throws IOException {
+    public static void update_LEDS() throws IOException, InterruptedException {
         for(int i = 0;i<leds.size();i++){
             float[] rgb_vals = leds.get(i).getRGBComponents(null);
             float[] hsb_vals = Color.RGBtoHSB((int) rgb_vals[0], (int) rgb_vals[1], (int) rgb_vals[2],null);
@@ -65,7 +65,9 @@ public class Main {
             arduinoOutputStream.write((int) hsb_vals[0]);
             arduinoOutputStream.write((int) hsb_vals[1]);
             arduinoOutputStream.write((int) hsb_vals[2]);
+            Thread.sleep(10);
         }
+        Thread.sleep(10);
         arduinoOutputStream.write(243);
         arduinoOutputStream.write(255);
         arduinoOutputStream.write(255);
