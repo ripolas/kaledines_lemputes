@@ -66,5 +66,9 @@ public class Main {
             arduinoOutputStream.write((int) hsb_vals[1]);
             arduinoOutputStream.write((int) hsb_vals[2]);
         }
+        arduinoOutputStream.write(243);
+        arduinoOutputStream.write(255);
+        arduinoOutputStream.write(255);
+        arduinoOutputStream.write(255);
     }
 }
