@@ -17,7 +17,7 @@ public class Main {
     public static ArrayList<Color> leds = new ArrayList<>();
     public static final int LED_COUNT = 118;
     public static SerialPort serialPort;
-    public static final String arduinoPort = "dev/ttyAMA10"; //"COM6" for windows.
+    public static final String arduinoPort = "/dev/ttyACM0"; //"COM6" for windows.
     public static OutputStream arduinoOutputStream;
     public static void main(String[] args) throws IOException {
         staticFileLocation("public");
@@ -49,8 +49,12 @@ public class Main {
         serialPort.setComPortParameters(1000000, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
         serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, 0, 0);
         arduinoOutputStream = serialPort.getOutputStream();
-        while(true){
-            update_LEDS();
+        if (serialPort.openPort()) {
+            while (true) {
+                update_LEDS();
+            }
+        }else{
+            System.out.println("failed to open port");
         }
     }
     public static void update_LEDS() throws IOException {
