@@ -17,7 +17,7 @@ public class Main {
     public static ArrayList<Color> leds = new ArrayList<>();
     public static final int LED_COUNT = 118;
     public static SerialPort serialPort;
-    public static final String arduinoPort = "/dev/ttyACM0"; //"COM6" for windows.
+    public static final String arduinoPort = "dev/ttyAMA10"; //"COM6" for windows.
     public static OutputStream arduinoOutputStream;
     public static void main(String[] args) throws IOException {
         staticFileLocation("public");
